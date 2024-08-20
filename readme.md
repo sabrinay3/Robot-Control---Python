@@ -1,33 +1,21 @@
-## Welcome to the LEAP Hand Python SDK
-
-### On Ubuntu
-- Install [ROS 1 Noetic](http://wiki.ros.org/ROS/Installation) normally first on Ubuntu 20.04.
-#### If you need an environment (venv is slightly less buggy than conda with ROS)
-- `python -m venv test_env`
-- `source test_env/bin/activate`
-#### Add this to a [catkin_workspace](http://wiki.ros.org/catkin/Tutorials/create_a_workspace) named catkin_ws using instructions below.  
-- `mkdir -p ~/catkin_ws/src` (If you do not have a workspace from your current project)
-- Next, copy the ros_module folder from this Github into the newly created src folder.  Then:
-- `cd ~/catkin_ws/`
-- `pip install empy==3.3.4 catkin_pkg pyyaml rospkg` 
-- `catkin_make`
-#### Setup Bashrc
-- `echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc`
-- `source ~/.bashrc`
-#### First time preparation
-- `pip install dynamixel_sdk numpy`
--  cd ~/catkin_ws/src/ros_module
-- `chmod +x leaphand_node.py`
-#### To Launch
-- Connect 5v power to the hand (the dynamixels should light up during boot up.)
-- Connect the Micro USB cable to the hand (Do not use too many USB extensions)
-- Find the USB port using [Dynamixel Wizard](https://emanual.robotis.com/docs/en/software/dynamixel/dynamixel_wizard2/)
-- `roslaunch example.launch`
-#### How to use
-- This is an example Launch script for just LEAP Hand.  The hand should come to life.  It makes topics you can publish to and services. You can see that with for example:
-- `rostopic list`
-- `rosservice list`
-- `rosservice call leap_position`
-- Publishing commands the hand and querying the services asks to receive data.
-- Please see ros_example.py for example python code that uses this LEAP Module.
-- Also see leaphand_node.py, the actual ros module, for further details.  It wraps the Python API.  It should be easy to read.  :)
+Quickstart Guide:
+Unity (for mac):
+Download Unity on your device
+Cloned https://github.com/Abraham190137/TeleoperationUnity/tree/main opened in unity and followed the instructions on the GitHub
+I used Unity (silicon) 2022.3.20f1 for Mac
+ROS
+Download ROS Noetic (or latest version) on Linux computer: https://wiki.ros.org/noetic 
+Follow instructions on site
+LEAP Hand/Dynamixel (must have ROS downloaded at this point): https://github.com/leap-hand/LEAP_Hand_API/tree/12acca918d8b08c280a5d290f92bdd1dce6270b7 (<-- Leap hand guide)
+Download the Dynamixel Wizard for Linux using instructions: https://emanual.robotis.com/docs/en/software/dynamixel/dynamixel_wizard2/ 
+Plug in LEAP Hand into computer and open dynamixel
+Scan using magnifying glass icon the top left hand corner of the wizard at 4000000 bps. The Wizard should read TTYUSB0 or TTYUSB1 (last digit may be different)
+If all the motors show up, connection is successful
+When running any code for the LEAP Hand, you must close the Dynamixel Wizard
+The range of values for the leap hand goes as follows: 3.00 = 0º rotation in the joint and 4.75 = 90º rotation in the joint
+VS Code: https://github.com/sabrinay3/Robot-Control---Python 
+You should use VS Code on Linux computer
+Use code from both LEAP Hand API and Teleoperation Github
+When editing scripts in Unity, upload the changes to the Oculus each time. 
+“record.py” and “replay.py” are used mainly for debugging purposes. It will record messages from the oculus and replay them on command. 
+“main.py” is the script for VR teleoperation of the LEAP hand. 
